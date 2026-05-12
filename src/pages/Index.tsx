@@ -115,18 +115,7 @@ const Index = () => {
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center">
-              {/* Card 1: Get Help */}
-              <button onClick={() => setContact(true)} className="group w-full sm:w-auto flex items-center gap-4 bg-white rounded-[1.25rem] p-3 pr-16 hover:scale-105 transition-transform shadow-lg text-left">
-                <div className="bg-[#eff3f9] p-3 rounded-full flex items-center justify-center">
-                  <LifeBuoy className="w-5 h-5 text-[#1a3052]" />
-                </div>
-                <div className="text-left">
-                  <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-[#888]">Get Help</span>
-                  <span className="block text-[#1a3052] font-bold text-[17px] leading-tight mt-0.5">How can we help today?</span>
-                </div>
-              </button>
-
-              {/* Card 2: Donate Now */}
+              {/* Card 1: Donate Now */}
               <Link to="/donate" className="group w-full sm:w-auto flex items-center gap-4 bg-[#1C61D1] rounded-[1.25rem] p-3 pr-20 border border-white/5 hover:scale-105 transition-transform shadow-lg">
                 <div className="bg-white/10 p-3 rounded-full flex items-center justify-center">
                   <Heart className="w-5 h-5 text-white" />
@@ -134,6 +123,17 @@ const Index = () => {
                 <div className="text-left">
                   <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-white/60">Make a Donation</span>
                   <span className="block text-white font-bold text-[17px] leading-tight mt-0.5">Donate Now</span>
+                </div>
+              </Link>
+
+              {/* Card 2: Register */}
+              <Link to="/golf" className="group w-full sm:w-auto flex items-center gap-4 bg-white rounded-[1.25rem] p-3 pr-16 hover:scale-105 transition-transform shadow-lg text-left">
+                <div className="bg-[#eff3f9] p-3 rounded-full flex items-center justify-center">
+                  <ArrowRight className="w-5 h-5 text-[#1a3052]" />
+                </div>
+                <div className="text-left">
+                  <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-[#888]">Annual Event</span>
+                  <span className="block text-[#1a3052] font-bold text-[17px] leading-tight mt-0.5">Register Now</span>
                 </div>
               </Link>
             </motion.div>
