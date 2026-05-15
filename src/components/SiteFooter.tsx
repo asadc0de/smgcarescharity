@@ -75,10 +75,10 @@ export const SiteFooter = () => {
 
         </div>
 
-        {/* Massive Brand Text (Like reference) */}
-        <div className="relative pointer-events-none select-none">
-          <h2 className="font-display text-[27vw] leading-none tracking-tighter text-white opacity-10 -mb-5">
-            smgcares
+        {/* Brand Text */}
+        <div className="relative pointer-events-none select-none text-center mt-16 mb-4">
+          <h2 className="font-display text-5xl md:text-7xl lg:text-9xl leading-none tracking-tighter text-white opacity-10">
+            SMG Cares
           </h2>
         </div>
 

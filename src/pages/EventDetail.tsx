@@ -179,7 +179,7 @@ const EventDetail = () => {
             {/* Clean Body Text with Editorial Drop Cap */}
             <div className="lg:col-span-8">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.3 }} className="prose prose-lg md:prose-xl max-w-none text-muted-foreground mb-16">
-                <p className="leading-relaxed whitespace-pre-wrap first-letter:text-7xl first-letter:font-display first-letter:text-[#1E63D1] first-letter:mr-3 first-letter:mt-2 first-letter:float-left first-letter:leading-none">
+                <p className="leading-relaxed whitespace-pre-wrap">
                   {event.body}
                 </p>
               </motion.div>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Calendar, Trophy } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import SponsorDialog from "@/components/SponsorDialog";
 import { Button } from "@/components/ui/button";
 import { ContactDialog } from "@/components/ContactDialog";
 import golfHero from "@/assets/golf-hero.jpg";
@@ -37,6 +38,8 @@ const gallery = [g2, e1, g3, golfHero];
 
 const Golf = () => {
   const [contact, setContact] = useState(false);
+  const [sponsorOpen, setSponsorOpen] = useState(false);
+  const [selectedSponsor, setSelectedSponsor] = useState<any | null>(null);
 
   return (
     <PageShell>
@@ -149,8 +152,8 @@ const Golf = () => {
                 <ul className={`mt-6 mb-8 space-y-2 text-sm flex-grow ${s.isFeatured ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
                   {s.perks.map(p => <li key={p} className="flex gap-2"><span className="text-accent">→</span>{p}</li>)}
                 </ul>
-                <Button asChild className={`mt-auto w-full rounded-full ${s.isFeatured ? "bg-gradient-gold text-accent-foreground" : "bg-primary text-primary-foreground"}`}>
-                  <Link to="/golf-register">Become a Sponsor</Link>
+                <Button onClick={() => { setSelectedSponsor(s); setSponsorOpen(true); }} className={`mt-auto w-full rounded-full ${s.isFeatured ? "bg-gradient-gold text-accent-foreground" : "bg-primary text-primary-foreground"}`}>
+                  Become a Sponsor
                 </Button>
               </motion.div>
             ))}
@@ -193,6 +196,7 @@ const Golf = () => {
       </section>
 
       <ContactDialog open={contact} onOpenChange={setContact} />
+      <SponsorDialog open={sponsorOpen} onOpenChange={setSponsorOpen} sponsor={selectedSponsor} />
     </PageShell>
   );
 };
