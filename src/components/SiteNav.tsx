@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ContactDialog } from "./ContactDialog";
+import smgLogo from "@/assets/logo.webp";
 
 const links = [
   { to: "/", label: "Home" },
@@ -34,9 +35,8 @@ export const SiteNav = () => {
     <>
       <header className="fixed top-6 inset-x-0 z-50 flex justify-center px-4">
         <div className={`flex items-center justify-between w-full max-w-6xl h-14 px-6 rounded-full transition-all duration-500 border border-white/10 ${isSolidNav ? "bg-primary/90 backdrop-blur-xl shadow-lg scale-[0.98]" : "bg-white/10 backdrop-blur-md"}`}>
-          <Link to="/" className="flex items-center gap-2 group shrink-0">
-            <span className="font-display text-xl md:text-2xl font-bold tracking-tight text-white">SMG</span>
-            <span className="font-display italic text-xl md:text-2xl text-accent-soft">Cares</span>
+          <Link to="/" className="flex items-center group shrink-0">
+            <img src={smgLogo} alt="SMG Cares" className="h-10 md:h-12 w-auto" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-7">

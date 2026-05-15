@@ -25,7 +25,7 @@ const initialEventsData = [
     year: "2026",
     tag: "Upcoming",
     title: "Annual Charity Golf Outing",
-    body: "Join us on Month Day, Year for our annual outing — a day of community, competition, and impact.",
+    body: "SMG Cares proudly announces our 2026 Charity Golf Outing at The Muttontown Club September 28th, 2026. We once again are bringing together an incredible community of supporters, partners, and participants for a meaningful day on the course.",
     cta: "Register Now",
     to: "/golf",
     image: golfOutingImg
@@ -100,10 +100,6 @@ const Index = () => {
         <div className="container-x relative pt-32 pb-20 text-center z-10">
           <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }} className="max-w-4xl mx-auto flex flex-col items-center">
 
-            <motion.div variants={fadeUp} className="mb-10 px-6 py-2 rounded-full border border-white/20 bg-transparent flex items-center gap-2">
-              <Sparkles className="h-3.5 w-3.5 text-white/80" />
-              <span className="text-[11px] font-bold uppercase tracking-[0.15em] text-white">SMG CARES · CHARITABLE FOUNDATION</span>
-            </motion.div>
 
             <motion.h1 variants={fadeUp} className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-[7.5rem] leading-[0.95] tracking-tighter text-white mb-6 text-balance">
               Giving Back &amp; <br />

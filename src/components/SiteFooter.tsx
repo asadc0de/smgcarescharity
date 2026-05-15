@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Linkedin, Twitter, Mail, ArrowUpRight } from "lucide-react";
+
 import { ContactDialog } from "./ContactDialog";
 
 export const SiteFooter = () => {
   const [contact, setContact] = useState(false);
   
   return (
-    <footer className="bg-primary text-primary-foreground relative overflow-hidden pt-16 md:pt-20 pb-10">
+    <footer className="bg-primary text-primary-foreground relative overflow-hidden pt-16 md:pt-20">
       <div className="container-x relative z-10">
         
         {/* Top Header Row */}
@@ -15,12 +15,12 @@ export const SiteFooter = () => {
           <h3 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight">
             Your charitable <br /> <span className="italic text-accent-soft">foundation partner.</span>
           </h3>
-          <button 
-            onClick={() => setContact(true)}
-            className="w-full md:w-auto px-8 md:px-12 py-4 md:py-6 border border-white/20 rounded-full text-xl md:text-3xl font-display hover:bg-white hover:text-primary transition-all text-center"
+          <Link 
+            to="/golf-register"
+            className="inline-block w-full md:w-auto px-8 md:px-12 py-4 md:py-6 border border-white/20 rounded-full text-xl md:text-3xl font-display hover:bg-white hover:text-primary transition-all text-center"
           >
             Start Here
-          </button>
+          </Link>
         </div>
 
         {/* Columns Row */}
@@ -84,7 +84,7 @@ export const SiteFooter = () => {
 
       </div>
       {/* Legal Footer */}
-        <div className="pt-10 mt-24 border-t border-white/10 text-center text-[10px] sm:text-xs uppercase tracking-widest text-white/50 font-bold flex flex-wrap justify-center gap-x-2 sm:gap-x-3 gap-y-2 pb-6 px-4">
+        <div className="pt-6 mt-8 border-t border-white/10 text-center text-[10px] sm:text-xs uppercase tracking-widest text-white/50 font-bold flex flex-wrap justify-center gap-x-2 sm:gap-x-3 gap-y-2 pb-6 px-4">
           <Link to="/" className="hover:text-white transition-colors cursor-pointer">SMG CARES</Link>
           <span className="text-white/20">I</span>
           <Link to="/terms" className="hover:text-white transition-colors cursor-pointer">ALL RIGHTS RESERVED</Link>

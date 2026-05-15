@@ -15,13 +15,12 @@ import img6 from "@/assets/img6.jpg";
 
 
 const boardMembers = [
-  { fullName: "Gregory M. Scotto, CPA", title: "Managing Partner", bio: "Gregory has helped SMG grow into a leading accounting firm and is trusted for improving clients’ financial success. He has been a licensed CPA since 2009", image: img1 },
-  { fullName: "Wesley S. Melchiorre, EA", title: "Managing Partner", bio: "Wesley leads the firm’s Hospitality practice and helps clients improve profitability through a modern, practical approach. He has been an Enrolled Agent since 2011.", image: img2 },
-  { fullName: "David M. Isaacs II, MBA, EA", title: "Partner", bio: "David helps clients stay profitable and compliant through his dedicated support. He has been an Enrolled Agent since 2019.", image: img3 },
-  { fullName: "Marc Valente, CPA", title: "Partner", bio: "Marc is a tax expert with 20 years of experience serving small and middle-market clients. He helps businesses reduce taxes and grow value through smart tax planning.", image: img4 },
-  { fullName: "Erin Connors CPA, CVA", title: "Partner - St. Petersburg", bio: "Erin is a CPA and CVA serving clients in Tampa Bay. She helps businesses and individuals with tax, accounting, and financial clarity.", image: img5 },
-  { fullName: "Marianne Hasselbach, CPA", title: "Partner - St. Petersburg", bio: "Marianne is a CPA with 25+ years of experience in tax and accounting. She is a trusted fiduciary focused on client success.", image: img6 },
- 
+  { fullName: "Wesley Melchiorre", title: "Board Chair" },
+  { fullName: "Gregory Scotto", title: "Vice Chair" },
+  { fullName: "David Issacs", title: "Board Treasurer" },
+  { fullName: "Marc Valente", title: "Board Secretary" },
+  { fullName: "Kinshuk Sharma", title: "Board Member" },
+  { fullName: "Danielle Hoering", title: "Board Member" },
 ];
 
 const About = () => {
@@ -147,45 +146,13 @@ const About = () => {
           <h2 className="mt-4 font-display text-3xl md:text-4xl lg:text-5xl text-primary leading-[1.05]">Meet the <span className="italic text-[#72a8ff]">board.</span></h2>
         </div>
 
-        <div className="marquee pb-12 -mx-4 sm:-mx-6 md:-mx-10 px-4 sm:px-6 md:px-10" style={{ gap: '1.5rem' }}>
-          <div className="marquee-track" style={{ gap: '1.5rem' }}>
-            {boardMembers.map((m, i) => (
-              <div key={m.fullName + i} className="group bg-white border border-border/50 shadow-sm rounded-[2rem] p-4 pb-8 hover-lift w-[300px] lg:w-[320px] shrink-0 flex flex-col">
-                <div className="aspect-[4/5] w-full rounded-3xl bg-gradient-navy flex items-center justify-center mb-6 relative overflow-hidden group/img">
-                  {m.image ? (
-                    <img src={m.image} alt={m.fullName} className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover/img:scale-105" />
-                  ) : (
-                    <span className="font-display text-7xl text-accent/40">{m.fullName.split(" ").map(w => w[0]).join("").slice(0, 2)}</span>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-60" />
-                </div>
-                <div className="px-2 flex-1 flex flex-col text-center">
-                  <p className="text-[10px] uppercase tracking-widest text-accent font-bold mb-1.5">{m.title}</p>
-                  <h3 className="font-display text-xl text-primary leading-snug mb-3">{m.fullName}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mt-auto line-clamp-4">{m.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="marquee-track" style={{ gap: '1.5rem' }} aria-hidden="true">
-            {boardMembers.map((m, i) => (
-              <div key={m.fullName + i + "-dup"} className="group bg-white border border-border/50 shadow-sm rounded-[2rem] p-4 pb-8 hover-lift w-[300px] lg:w-[320px] shrink-0 flex flex-col">
-                <div className="aspect-[4/5] w-full rounded-3xl bg-gradient-navy flex items-center justify-center mb-6 relative overflow-hidden group/img">
-                  {m.image ? (
-                    <img src={m.image} alt={m.fullName} className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover/img:scale-105" />
-                  ) : (
-                    <span className="font-display text-7xl text-accent/40">{m.fullName.split(" ").map(w => w[0]).join("").slice(0, 2)}</span>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-60" />
-                </div>
-                <div className="px-2 flex-1 flex flex-col text-center">
-                  <p className="text-[10px] uppercase tracking-widest text-accent font-bold mb-1.5">{m.title}</p>
-                  <h3 className="font-display text-xl text-primary leading-snug mb-3">{m.fullName}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mt-auto line-clamp-4">{m.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto px-4 pb-12">
+          {boardMembers.map((m, i) => (
+            <div key={m.fullName + i} className="text-center bg-white border border-border/50 shadow-sm rounded-2xl p-6 hover-lift">
+              <p className="text-[10px] uppercase tracking-widest text-accent font-bold mb-3">{m.title}</p>
+              <h3 className="font-display text-2xl text-primary leading-snug">{m.fullName}</h3>
+            </div>
+          ))}
         </div>
       </section>
     </PageShell>

@@ -11,13 +11,28 @@ import e1 from "@/assets/event-2025.jpg";
 import g3 from "@/assets/gallery-3.jpg";
 
 const sponsorships = [
-  { tierName: "Title Sponsor", price: "$25,000", isFeatured: true, perks: ["Naming rights", "Premium hole signage", "Foursome included", "Banner placement", "Social recognition"] },
-  { tierName: "Eagle Sponsor", price: "$10,000", isFeatured: false, perks: ["Foursome included", "Hole signage", "Dinner table for 8", "Program recognition"] },
-  { tierName: "Birdie Sponsor", price: "$5,000", isFeatured: false, perks: ["Twosome included", "Hole signage", "Program recognition"] },
-  { tierName: "Hole Sponsor", price: "$1,500", isFeatured: false, perks: ["Custom hole signage", "Program recognition"] },
+  { tierName: "Event Sponsor", price: "$10,000", isFeatured: true, perks: ["2 Foursomes", "Logo on ALL Signage", "2 Tee Signs"] },
+  { tierName: "Signature Cocktail Sponsor", price: "$7,500", isFeatured: true, perks: ["1 Foursome", "Logo on ALL Cocktail Tables", "Specialty Drink named after you", "Tee Sign"] },
+  { tierName: "Caddie Sponsor (2 Available)", price: "$5,500", isFeatured: false, perks: ["1 Foursome", "Logo on Caddie Bibs"] },
+  { tierName: "Barbecue Sponsor", price: "$5,000", isFeatured: false, perks: ["1 Foursome", "Logo at BBQ Station", "Tee Sign"] },
+  { tierName: "Refreshment Sponsor", price: "$5,000", isFeatured: false, perks: ["1 Foursome", "Logo at Refreshment Station", "Tee Sign"] },
+  { tierName: "Golf Cart Sponsor", price: "$5,000", isFeatured: false, perks: ["1 Foursome", "Logo on ALL Golf Carts"] },
+  { tierName: "Tee Marker Sponsor (4 Available)", price: "$4,000", isFeatured: false, perks: ["1 Foursome", "Logo on ALL 36 Tee Markers"] },
+  { tierName: "Pin Flag Sponsor (Exclusive)", price: "$4,000", isFeatured: false, perks: ["1 Foursome", "Logo on ALL 18 Pin Flags"] },
+  { tierName: "Raffle Sponsor", price: "$2,500", isFeatured: false, perks: ["Logo on Signage at Raffle Tables"] },
+  { tierName: "AV Sponsor", price: "$2,250", isFeatured: false, perks: [] },
+  { tierName: "Awards Sponsor", price: "$1,500", isFeatured: false, perks: [] },
+  { tierName: "Photography Sponsor", price: "$1,250", isFeatured: false, perks: [] },
+  { tierName: "Locker Room Bar Sponsor", price: "$1,000", isFeatured: false, perks: [] },
+  { tierName: "Closest to the Pin Sponsor", price: "$750", isFeatured: false, perks: [] },
+  { tierName: "Closest to the Line Sponsor", price: "$750", isFeatured: false, perks: [] },
+  { tierName: "Longest Drive Sponsor", price: "$750", isFeatured: false, perks: [] },
+  { tierName: "Driving Range Sponsor", price: "$500", isFeatured: false, perks: [] },
+  { tierName: "Putting Green Sponsor", price: "$500", isFeatured: false, perks: [] },
+  { tierName: "Tee Sign", price: "$275", isFeatured: false, perks: [] },
 ];
 
-const stats = [{ number: "120+", label: "Players" }, { number: "$250K", label: "Goal Raised" }, { number: "20+", label: "Sponsors" }];
+const stats = [{ number: "140+", label: "Player Goal" }, { number: "$175,000", label: "Fundraising Goal" }, { number: "20+", label: "Sponsors" }];
 const gallery = [g2, e1, g3, golfHero];
 
 const Golf = () => {
@@ -51,8 +66,8 @@ const Golf = () => {
                   <div className="grid sm:grid-cols-3 gap-6 md:gap-10 py-10 border-y border-white/10 mb-12">
                     {[
                       { icon: Calendar, label: "Date", val: "September 28th" },
-                      { icon: MapPin, label: "Location", val: "Elite Golf Club" },
-                      { icon: Trophy, label: "Goal", val: "Awards & Impact" }
+                      { icon: MapPin, label: "Location", val: "The Muttontown Club" },
+                      { icon: Trophy, label: "Goal", val: "$175,000" }
                     ].map((item, i) => (
                       <div key={i} className="flex flex-col gap-3">
                         <div className="w-12 h-12 rounded-2xl bg-gradient-gold flex items-center justify-center shadow-gold">
@@ -124,7 +139,7 @@ const Golf = () => {
             <h2 className="mt-4 font-display text-3xl md:text-4xl lg:text-5xl text-primary leading-[1.05]">Become a <span className="italic text-[#72a8ff]">sponsor.</span></h2>
             <p className="mt-6 text-muted-foreground text-lg">Choose the level that's right for your organization. Every sponsor makes our mission possible.</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {sponsorships.map((s, i) => (
               <motion.div key={s.tierName} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: i * 0.1 }}
                 className={`relative rounded-3xl p-8 border hover-lift flex flex-col ${s.isFeatured ? "bg-primary text-primary-foreground border-primary shadow-elegant" : "bg-[#dcdcdc] border-border"}`}>
