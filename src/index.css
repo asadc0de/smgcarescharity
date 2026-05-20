@@ -123,3 +123,11 @@
     animation: shimmer 3s linear infinite;
   }
 }
+
+/* Hero section responsive override: default uses min-h-[100svh] inline, but
+   at very large widths (>=1521px) use a shorter cinematic height. */
+/* Apply shortened hero height only when viewport is wider than 1521px
+   so that at exactly 1521px the hero remains 100vh as requested. */
+@media (min-width: 1522px) {
+  .hero-section { min-height: 67vh !important; }
+}

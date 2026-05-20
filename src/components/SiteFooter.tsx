@@ -10,76 +10,79 @@ export const SiteFooter = () => {
     <footer className="bg-primary text-primary-foreground relative overflow-hidden pt-16 md:pt-20">
       <div className="container-x relative z-10">
         
-        {/* Top Header Row */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
-          <h3 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight">
-            Your charitable <br /> <span className="italic text-accent-soft">foundation partner.</span>
-          </h3>
-          <Link 
-            to="/golf-register"
-            className="inline-block w-full md:w-auto px-8 md:px-12 py-4 md:py-6 border border-white/20 rounded-full text-xl md:text-3xl font-display hover:bg-white hover:text-primary transition-all text-center"
-          >
-            Start Here
-          </Link>
-        </div>
-
-        {/* Columns Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-8 mb-2">
-          
-          {/* Column 1 */}
-          <div>
-            <p className="font-display text-xl mb-6">Fundraising</p>
-            <ul className="space-y-2 text-sm text-white/50">
-              {[
-                { label: "2026 Golf Outing", to: "/golf" },
-                { label: "Recent Events", to: "/events" },
-                { label: "Past Impact", to: "/events" },
-                { label: "Donations", to: "/donate" }
-              ].map(link => (
-                <li key={link.label}>
-                  <Link to={link.to} className="hover:text-white transition-colors cursor-pointer block">{link.label}</Link>
-                </li>
-              ))}
-            </ul>
+        {/* Top Header Row reorganized: left stacks tagline + button, right groups link columns */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
+          {/* Left: tagline + button stacked */}
+          <div className="flex flex-col items-start gap-6">
+            <h3 className="font-display text-3xl sm:text-4xl md:text-5xl leading-tight">
+              Your charitable <br /> <span className="italic text-accent-soft">foundation partner.</span>
+            </h3>
+            <Link 
+              to="/golf-register"
+              className="inline-block w-full md:w-auto px-8 md:px-12 py-4 md:py-6 border border-white/20 rounded-full text-xl md:text-3xl font-display hover:bg-white hover:text-primary transition-all text-center"
+            >
+              Start Here
+            </Link>
           </div>
 
-          {/* Column 2 */}
-          <div>
-            <p className="font-display text-xl mb-6">Explore</p>
-            <ul className="space-y-2 text-sm text-white/50">
-              {[
-                { label: "Home", to: "/" },
-                { label: "About Us", to: "/about" },
-                { label: "Gallery", to: "/gallery" },
-                { label: "Contact", action: () => setContact(true) }
-              ].map(link => (
-                <li key={link.label}>
-                  {link.to ? (
-                    <Link to={link.to} className="hover:text-white transition-colors cursor-pointer block">{link.label}</Link>
-                  ) : (
-                    <button onClick={link.action} className="hover:text-white transition-colors cursor-pointer block text-left">{link.label}</button>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Right: group all three link columns together and align right */}
+          <div className="flex w-full md:w-auto justify-end">
+            <div className="flex flex-wrap justify-end gap-12 lg:gap-16">
+              {/* Column 1 */}
+              <div>
+                <p className="font-display text-xl mb-6">Fundraising</p>
+                <ul className="space-y-2 text-sm text-white/50">
+                  {[
+                    { label: "2026 Golf Outing", to: "/golf" },
+                    { label: "Recent Events", to: "/events" },
+                    { label: "Past Impact", to: "/events" },
+                    { label: "Donations", to: "/donate" }
+                  ].map(link => (
+                    <li key={link.label}>
+                      <Link to={link.to} className="hover:text-white transition-colors cursor-pointer block">{link.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-          {/* Column 3 (Formerly 4) */}
-          <div className="flex flex-col items-start">
-            <p className="font-display text-xl mb-6">Institutional ↗</p>
-            <div className="flex flex-col items-start gap-2 text-[10px] uppercase tracking-widest text-white/30 font-bold">
-              <p>© {new Date().getFullYear()} SMG Cares</p>
-              <p>Supported by SMG ABA</p>
+              {/* Column 2 */}
+              <div>
+                <p className="font-display text-xl mb-6">Explore</p>
+                <ul className="space-y-2 text-sm text-white/50">
+                  {[
+                    { label: "Home", to: "/" },
+                    { label: "About Us", to: "/about" },
+                    { label: "Gallery", to: "/gallery" },
+                    { label: "Contact", action: () => setContact(true) }
+                  ].map(link => (
+                    <li key={link.label}>
+                      {link.to ? (
+                        <Link to={link.to} className="hover:text-white transition-colors cursor-pointer block">{link.label}</Link>
+                      ) : (
+                        <button onClick={link.action} className="hover:text-white transition-colors cursor-pointer block text-left">{link.label}</button>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Column 3 */}
+              <div className="flex flex-col items-start">
+                <p className="font-display text-xl mb-6">Institutional ↗</p>
+                <div className="flex flex-col items-start gap-2 text-[10px] uppercase tracking-widest text-white/30 font-bold">
+                  <p>© {new Date().getFullYear()} SMG Cares</p>
+                  <p>Supported by SMG ABA</p>
+                </div>
+              </div>
             </div>
           </div>
-
         </div>
 
       </div>
 
       {/* Watermark (behind footer content) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <h2 className="font-display leading-none tracking-tighter text-white z-0" style={{ fontSize: '190px', opacity: 0.03 }}>
+        <h2 className="font-display leading-none tracking-tighter text-white z-0" style={{ fontSize: '250px', opacity: 0.03 }}>
           SMG Cares
         </h2>
       </div>

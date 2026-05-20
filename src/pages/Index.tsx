@@ -161,7 +161,7 @@ const Index = () => {
   return (
     <PageShell>
       {/* HERO: Cinematic Signature Layout */}
-      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#1a3052]">
+      <section className="relative hero-section min-h-[100svh] flex items-center justify-center overflow-hidden bg-[#1a3052]">
         <img
           src={heroImg}
           alt=""
@@ -239,6 +239,12 @@ const Index = () => {
               </Link>
             </motion.div>
           </motion.div>
+        </div>
+        {/* Watermark (behind hero content) */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+          <h2 className="font-display leading-none tracking-tighter text-white z-0" style={{ fontSize: '250px', opacity: 0.06 }}>
+            SMG Cares
+          </h2>
         </div>
       </section>
 
@@ -358,7 +364,7 @@ const Index = () => {
 
           {/* Core Values Cards */}
           <div className="mt-8 -mx-6 md:-mx-10">
-            <div className="grid grid-cols-5 gap-4 2xl:gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 2xl:gap-5">
               {coreValuesCards.map((card, i) => (
                 <motion.article
                   key={card.title}
@@ -366,7 +372,7 @@ const Index = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.65, delay: i * 0.08 }}
-                  className="h-full rounded-3xl bg-white p-1.5 shadow-md"
+                  className="h-full rounded-3xl bg-white p-1.5 shadow-md mx-6 md:mx-0"
                 >
                   <div
                     className={`flex h-full min-h-[255px] flex-col rounded-2xl p-4 md:p-5 ${card.tint} border border-white/90 backdrop-blur-sm`}
