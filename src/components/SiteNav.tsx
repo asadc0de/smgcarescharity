@@ -34,9 +34,9 @@ export const SiteNav = () => {
   return (
     <>
       <header className="fixed top-6 inset-x-0 z-50 flex justify-center px-4">
-        <div className={`flex items-center justify-between w-full max-w-6xl h-14 px-6 rounded-full transition-all duration-500 border border-white/10 ${isSolidNav ? "bg-primary/90 backdrop-blur-xl shadow-lg scale-[0.98]" : "bg-white/10 backdrop-blur-md"}`}>
-          <Link to="/" className="flex items-center group shrink-0">
-            <img src={smgLogo} alt="SMG Cares" className="h-10 md:h-12 w-auto" />
+        <div className={`flex items-center justify-start w-full max-w-6xl h-20 px-6 rounded-full transition-all duration-500 border border-white/10 ${isSolidNav ? "bg-primary/90 backdrop-blur-xl shadow-lg scale-[0.98]" : "bg-white/10 backdrop-blur-md"}`}>
+          <Link to="/" className="flex items-center group shrink-0 mr-6">
+            <img src={smgLogo} alt="SMG Cares" className="h-14 md:h-16 w-auto" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-7">
@@ -48,8 +48,8 @@ export const SiteNav = () => {
             <button onClick={() => setContactOpen(true)} className="text-[11px] uppercase tracking-widest font-semibold text-white/80 hover:text-white transition-colors">Contact</button>
           </nav>
 
-          <div className="flex items-center gap-3">
-            <Button asChild size="sm" className="hidden sm:inline-flex bg-gradient-gold text-accent-foreground hover:opacity-90 rounded-full px-5 h-8 text-xs font-bold uppercase tracking-wider">
+          <div className="flex items-center gap-3 ml-auto">
+            <Button asChild size="sm" className="hidden sm:inline-flex bg-gradient-gold text-accent-foreground hover:opacity-90 rounded-full px-6 h-9 text-sm font-bold uppercase tracking-wider">
               <Link to="/donate">Donate Now</Link>
             </Button>
             <button onClick={() => setOpen(o => !o)} className="lg:hidden p-1.5 text-white" aria-label="Menu">

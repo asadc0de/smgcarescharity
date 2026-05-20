@@ -75,16 +75,17 @@ export const SiteFooter = () => {
 
         </div>
 
-        {/* Brand Text */}
-        <div className="relative pointer-events-none select-none text-center mt-16 mb-4">
-          <h2 className="font-display text-5xl md:text-7xl lg:text-9xl leading-none tracking-tighter text-white opacity-10">
-            SMG Cares
-          </h2>
-        </div>
-
       </div>
+
+      {/* Watermark (behind footer content) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+        <h2 className="font-display leading-none tracking-tighter text-white z-0" style={{ fontSize: '190px', opacity: 0.03 }}>
+          SMG Cares
+        </h2>
+      </div>
+
       {/* Legal Footer */}
-        <div className="pt-6 mt-8 border-t border-white/10 text-center text-[10px] sm:text-xs uppercase tracking-widest text-white/50 font-bold flex flex-wrap justify-center gap-x-2 sm:gap-x-3 gap-y-2 pb-6 px-4">
+        <div className="pt-6 mt-8 border-t border-white/10 text-center text-[10px] sm:text-xs uppercase tracking-widest text-white/50 font-bold flex flex-wrap justify-center gap-x-2 sm:gap-x-3 gap-y-2 pb-6 px-4 z-10 relative">
           <Link to="/" className="hover:text-white transition-colors cursor-pointer">SMG CARES</Link>
           <span className="text-white/20">I</span>
           <Link to="/terms" className="hover:text-white transition-colors cursor-pointer">ALL RIGHTS RESERVED</Link>
