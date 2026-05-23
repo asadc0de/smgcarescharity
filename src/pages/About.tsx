@@ -141,14 +141,14 @@ const About = () => {
       </section>
 
       <section className="container-x py-16 md:py-28">
-        <div className="mb-16">
+        <div className="mb-16 max-w-3xl mx-auto text-center">
           <span className="eyebrow">Our Team</span>
           <h2 className="mt-4 font-display text-3xl md:text-4xl lg:text-5xl text-primary leading-[1.05]">Meet the <span className="italic text-[#72a8ff]">board.</span></h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto px-4 pb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12 max-w-4xl mx-auto px-4 pb-12 justify-items-center">
           {boardMembers.map((m, i) => (
-            <div key={m.fullName + i} className="flex flex-col items-center justify-center text-center bg-white border border-border/50 shadow-sm rounded-2xl p-6 hover-lift">
+            <div key={m.fullName + i} className="flex flex-col items-center justify-center text-center bg-white border border-border/50 shadow-sm rounded-2xl p-6 hover-lift w-full max-w-[240px] min-h-[140px] mx-auto">
               <p className="text-[10px] uppercase tracking-widest text-accent font-bold mb-3 text-center">{m.title}</p>
               <h3 className="font-display text-2xl text-primary leading-snug text-center w-full">{m.fullName}</h3>
             </div>
