@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
+import { ContactDialog } from "@/components/ContactDialog";
 
-const Donate = () => (
+const Donate = () => {
+  const [contactOpen, setContactOpen] = useState(false);
+
+  return (
   <PageShell>
     <section className="relative pt-40 pb-32 md:pt-64 md:pb-56 bg-primary text-primary-foreground min-h-[100svh] flex items-center overflow-hidden">
       {/* Massive Brand Watermark */}
@@ -59,8 +64,12 @@ const Donate = () => (
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-5">
-            <Button asChild size="lg" className="w-full sm:w-auto bg-gradient-gold text-accent-foreground rounded-full px-8 md:px-14 py-4 h-14 md:h-18 text-lg md:text-xl font-black shadow-gold hover:scale-105 transition-transform">
-              <a href="mailto:info@smgcares.org">Contact us to give</a>
+            <Button 
+              onClick={() => setContactOpen(true)}
+              size="lg" 
+              className="w-full sm:w-auto bg-gradient-gold text-accent-foreground rounded-full px-8 md:px-14 py-4 h-14 md:h-18 text-lg md:text-xl font-black shadow-gold hover:scale-105 transition-transform"
+            >
+              Contact us to give
             </Button>
             <Button size="lg" variant="outline" className="w-full sm:w-auto bg-white/5 border-white/20 text-white backdrop-blur-md hover:bg-white/10 rounded-full px-8 md:px-14 h-14 md:h-18 text-lg md:text-xl font-black transition-all">
               Learn More
@@ -77,7 +86,9 @@ const Donate = () => (
 
      
     </section>
+    <ContactDialog open={contactOpen} onOpenChange={setContactOpen} />
   </PageShell>
 );
+};
 
 export default Donate;

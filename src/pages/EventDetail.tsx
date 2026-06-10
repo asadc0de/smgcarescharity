@@ -116,7 +116,7 @@ const EventDetail = () => {
 
               <div className="shrink-0 mb-2">
                 <Button asChild size="lg" className="rounded-full bg-gradient-gold text-accent-foreground hover:scale-105 shadow-gold px-12 h-14 md:h-16 font-black text-lg transition-transform">
-                  <Link to={isUpcoming ? "/golf" : "/donate"}>
+                  <Link to={isUpcoming ? "/golf" : "/golf-register?scroll=true"}>
                     {isUpcoming ? "Register Now" : "Donate Now"}
                   </Link>
                 </Button>
@@ -193,7 +193,7 @@ const EventDetail = () => {
                   Your contribution goes directly towards funding initiatives that change lives. Join us in making a difference.
                 </p>
                 <Button asChild className="w-full rounded-2xl bg-[#1E63D1] hover:bg-[#154b9f] text-white h-14 shadow-md font-medium text-lg mb-6">
-                  <Link to={isUpcoming ? "/golf" : "/donate"}>
+                  <Link to={isUpcoming ? "/golf" : "/golf-register?scroll=true"}>
                     {isUpcoming ? "Register Now" : "Make a Donation"}
                   </Link>
                 </Button>

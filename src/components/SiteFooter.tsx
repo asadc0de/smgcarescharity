@@ -36,7 +36,7 @@ export const SiteFooter = () => {
                     { label: "2026 Golf Outing", to: "/golf" },
                     { label: "Recent Events", to: "/events" },
                     { label: "Past Impact", to: "/events" },
-                    { label: "Donations", to: "/donate" }
+                    { label: "Donations", to: "/golf-register?scroll=true" }
                   ].map(link => (
                     <li key={link.label}>
                       <Link to={link.to} className="hover:text-white transition-colors cursor-pointer block">{link.label}</Link>

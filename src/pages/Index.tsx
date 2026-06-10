@@ -204,7 +204,7 @@ const Index = () => {
             >
               {/* Card 1: Donate Now */}
               <Link
-                to="/donate"
+                to="/golf-register?scroll=true"
                 className="group w-full sm:w-auto flex items-center gap-4 bg-[#1C61D1] rounded-[1.25rem] p-3 pr-20 border border-white/5 hover:scale-105 transition-transform shadow-lg"
               >
                 <div className="bg-white/10 p-3 rounded-full flex items-center justify-center">
@@ -413,7 +413,7 @@ const Index = () => {
               size="lg"
               className="bg-primary text-primary-foreground rounded-full px-12 h-16 text-xl font-black hover:bg-primary-glow shadow-elegant"
             >
-              <Link to="/donate">
+              <Link to="/golf-register?scroll=true">
                 Donate Now <Sparkles className="ml-2 h-5 w-5" />
               </Link>
             </Button>
@@ -571,7 +571,7 @@ const Index = () => {
               size="lg"
               className="bg-gradient-gold text-accent-foreground rounded-full px-8 md:px-16 h-14 md:h-20 text-lg md:text-2xl font-black shadow-gold hover:scale-105 transition-transform"
             >
-              <Link to="/donate">
+              <Link to="/golf-register?scroll=true">
                 Donate Now <ArrowRight className="ml-3 h-7 w-7" />
               </Link>
             </Button>

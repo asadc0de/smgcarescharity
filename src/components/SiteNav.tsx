@@ -63,7 +63,7 @@ export const SiteNav = () => {
 
           <div className="flex-1 flex justify-end items-center gap-3 shrink-0">
             <Button asChild size="sm" className="hidden sm:inline-flex bg-gradient-gold text-accent-foreground hover:opacity-90 rounded-full px-6 h-9 text-sm font-bold uppercase tracking-wider">
-              <Link to="/donate">Donate Now</Link>
+              <Link to="/golf-register?scroll=true">Donate Now</Link>
             </Button>
             <button onClick={() => setOpen(o => !o)} className="lg:hidden p-1.5 text-white" aria-label="Menu">
               {open ? <X size={20} /> : <Menu size={20} />}
@@ -86,7 +86,7 @@ export const SiteNav = () => {
                   </NavLink>
                 ))}
                 <button onClick={() => { setOpen(false); setContactOpen(true); }} className="text-lg font-display text-white py-1 text-left border-b border-white/10">Contact Us</button>
-                <Button asChild className="bg-gradient-gold text-accent-foreground rounded-full mt-2"><Link to="/donate">Donate Now</Link></Button>
+                <Button asChild className="bg-gradient-gold text-accent-foreground rounded-full mt-2"><Link to="/golf-register?scroll=true">Donate Now</Link></Button>
               </div>
             </motion.div>
           )}

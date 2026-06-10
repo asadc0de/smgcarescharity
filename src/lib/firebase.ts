@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
@@ -25,6 +25,12 @@ const app = initializeApp(isConfigValid ? firebaseConfig : {
   messagingSenderId: "",
   appId: ""
 });
-export const db = getFirestore(app);
+
+export const db = initializeFirestore(app, isConfigValid ? {
+  localCache: persistentLocalCache({
+    tabManager: persistentMultipleTabManager()
+  })
+} : {});
+
 export const firebaseIsConfigured = isConfigValid;
 export const auth = firebaseIsConfigured ? getAuth(app) : null;

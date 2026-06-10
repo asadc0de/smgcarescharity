@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Trophy, Users, Star, Flag, ChevronRight, ChevronLeft, CheckCircle2, XCircle, AlertCircle, Infinity as InfinityIcon } from "lucide-react";
 import { collection, onSnapshot, doc, getDoc, setDoc, updateDoc, increment } from "firebase/firestore";
@@ -66,6 +66,22 @@ const fadeUp = {
 
 const GolfRegister = () => {
   const [activeTab, setActiveTab] = useState<"register" | "sponsor">("register");
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get("scroll") === "true") {
+      setActiveTab("register");
+      const timer = setTimeout(() => {
+        const element = document.getElementById("registration-cards");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
+
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const [visibleSponsorCount, setVisibleSponsorCount] = useState(6);
@@ -505,7 +521,7 @@ const GolfRegister = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              <div id="registration-cards" className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 {packages.map((pkg, i) => {
                   const isSelected = selectedPackage === pkg.id;
                   let Icon = Flag;
