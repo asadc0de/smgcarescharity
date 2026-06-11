@@ -13,6 +13,7 @@ import {
   LifeBuoy,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Target,
   Eye,
   Zap,
@@ -24,6 +25,8 @@ import { PageShell } from "@/components/PageShell";
 import { RotatingWords } from "@/components/RotatingWords";
 import { Button } from "@/components/ui/button";
 import { ContactDialog } from "@/components/ContactDialog";
+import { CustomDonationModal } from "@/components/CustomDonationModal";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import heroImg from "@/assets/hero-bg.png";
 import img1 from "@/assets/Gallery pages images/A7R00958.jpg";
 import img2 from "@/assets/Gallery pages images/_JP_0067.jpg";
@@ -77,6 +80,7 @@ const fadeUp: Variants = {
 
 const Index = () => {
   const [contact, setContact] = useState(false);
+  const [donationOpen, setDonationOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [eventsData, setEventsData] = useState(initialEventsData);
   const carouselImages = [img1, img2, img3, img4];
@@ -203,22 +207,31 @@ const Index = () => {
               className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center items-center"
             >
               {/* Card 1: Donate Now */}
-              <Link
-                to="/golf-register?scroll=true"
-                className="group w-full sm:w-auto flex items-center gap-4 bg-[#1C61D1] rounded-[1.25rem] p-3 pr-20 border border-white/5 hover:scale-105 transition-transform shadow-lg"
-              >
-                <div className="bg-white/10 p-3 rounded-full flex items-center justify-center">
-                  <Heart className="w-5 h-5 text-white" />
-                </div>
-                <div className="text-left">
-                  <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-white/60">
-                    Make a Donation
-                  </span>
-                  <span className="block text-white font-bold text-[17px] leading-tight mt-0.5">
-                    Donate Now
-                  </span>
-                </div>
-              </Link>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="group w-full sm:w-auto flex items-center gap-4 bg-[#1C61D1] rounded-[1.25rem] p-3 pr-20 border border-white/5 hover:scale-105 transition-transform shadow-lg outline-none">
+                    <div className="bg-white/10 p-3 rounded-full flex items-center justify-center">
+                      <Heart className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="text-left">
+                      <span className="block text-[9px] font-black uppercase tracking-[0.2em] text-white/60">
+                        Make a Donation
+                      </span>
+                      <span className="flex items-center text-white font-bold text-[17px] leading-tight mt-0.5">
+                        Donate Now <ChevronDown className="ml-2 w-4 h-4 transition-transform group-data-[state=open]:rotate-180" />
+                      </span>
+                    </div>
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-64 bg-primary text-primary-foreground border-white/10 mt-2 p-2 rounded-xl">
+                  <DropdownMenuItem onClick={() => setDonationOpen(true)} className="cursor-pointer hover:bg-white/10 focus:bg-white/10 font-medium py-3 rounded-lg">
+                    Donate to SMG Cares
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild className="cursor-pointer hover:bg-white/10 focus:bg-white/10 font-medium py-3 rounded-lg">
+                    <Link to="/golf-register?scroll=true">2026 Charity Golf Outing</Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
 
               {/* Card 2: Register */}
               <Link
@@ -579,6 +592,7 @@ const Index = () => {
         </div>
       </section>
       <ContactDialog open={contact} onOpenChange={setContact} />
+      <CustomDonationModal open={donationOpen} onOpenChange={setDonationOpen} />
     </PageShell>
   );
 };

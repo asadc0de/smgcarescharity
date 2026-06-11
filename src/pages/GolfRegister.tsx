@@ -7,6 +7,7 @@ import { db } from "@/lib/firebase";
 import { PageShell } from "@/components/PageShell";
 import { Button } from "@/components/ui/button";
 import { ContactDialog } from "@/components/ContactDialog";
+import CustomDonationModal from "@/components/CustomDonationModal";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -86,6 +87,7 @@ const GolfRegister = () => {
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const [visibleSponsorCount, setVisibleSponsorCount] = useState(6);
   const [contact, setContact] = useState(false);
+  const [customDonationOpen, setCustomDonationOpen] = useState(false);
   const [registerFormOpen, setRegisterFormOpen] = useState(false);
   const [formStep, setFormStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -604,6 +606,35 @@ const GolfRegister = () => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto p-2">
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0 }}
+                  onClick={() => setCustomDonationOpen(true)}
+                  className="relative rounded-3xl border-2 overflow-hidden transition-all duration-300 cursor-pointer hover-lift bg-[#dcdcdc] border-border hover:border-accent/40"
+                >
+                  <div className="p-7 flex flex-col h-full">
+                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center mb-4 bg-gradient-gold shadow-gold">
+                      <Star className="w-5 h-5 text-accent-foreground" strokeWidth={1.5} />
+                    </div>
+                    <p className="text-xs uppercase tracking-[0.25em] font-black mb-1 text-accent">Make a Difference</p>
+                    <div className="font-display text-4xl leading-none mb-3 text-[#72a8ff]">Custom Donation</div>
+                    <div className="flex items-center gap-1.5 text-xs mb-3 pb-3 border-b border-black/10">
+                      <CheckCircle2 className="w-3.5 h-3.5 flex-shrink-0 text-accent" />
+                      <span className="font-semibold text-accent">Any amount appreciated</span>
+                    </div>
+                    <ul className="space-y-2 text-sm text-muted-foreground flex-1">
+                      <li className="flex items-center gap-2">
+                        <span className="flex-shrink-0 text-accent">→</span>
+                        Donate directly to SMG Cares
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <span className="flex-shrink-0 text-accent">→</span>
+                        Custom amount (min $10)
+                      </li>
+                    </ul>
+                  </div>
+                </motion.div>
                 {tiers.slice(0, visibleSponsorCount).map((s, i) => {
                   const isSelected = selectedTier === s.id;
                   const soldCount = s.soldCount ?? 0;
@@ -950,6 +981,7 @@ const GolfRegister = () => {
         </DialogContent>
       </Dialog>
 
+      <CustomDonationModal open={customDonationOpen} onOpenChange={setCustomDonationOpen} />
       <ContactDialog open={contact} onOpenChange={setContact} />
     </PageShell>
   );
