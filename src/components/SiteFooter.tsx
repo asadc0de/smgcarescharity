@@ -27,11 +27,11 @@ export const SiteFooter = () => {
 
           {/* Right: group all three link columns together and align right */}
           <div className="flex w-full md:w-auto justify-end">
-            <div className="flex flex-wrap justify-end gap-12 lg:gap-16">
+            <div className="grid grid-cols-2 md:flex md:flex-row md:justify-end gap-x-12 gap-y-8 lg:gap-16 w-full">
               {/* Column 1 */}
-              <div>
+              <div className="flex flex-col items-start text-left">
                 <p className="font-display text-xl mb-6">Fundraising</p>
-                <ul className="space-y-2 text-sm text-white/50">
+                <ul className="space-y-2 text-sm text-white/50 flex flex-col items-start">
                   {[
                     { label: "2026 Golf Outing", to: "/golf" },
                     { label: "Recent Events", to: "/events" },
@@ -46,20 +46,20 @@ export const SiteFooter = () => {
               </div>
 
               {/* Column 2 */}
-              <div>
+              <div className="flex flex-col items-end md:items-start text-right md:text-left">
                 <p className="font-display text-xl mb-6">Explore</p>
-                <ul className="space-y-2 text-sm text-white/50">
+                <ul className="space-y-2 text-sm text-white/50 flex flex-col items-end md:items-start w-full">
                   {[
                     { label: "Home", to: "/" },
                     { label: "About Us", to: "/about" },
                     { label: "Gallery", to: "/gallery" },
                     { label: "Contact", action: () => setContact(true) }
                   ].map(link => (
-                    <li key={link.label}>
+                    <li key={link.label} className="w-full text-right md:text-left">
                       {link.to ? (
-                        <Link to={link.to} className="hover:text-white transition-colors cursor-pointer block">{link.label}</Link>
+                        <Link to={link.to} className="hover:text-white transition-colors cursor-pointer block text-right md:text-left w-full">{link.label}</Link>
                       ) : (
-                        <button onClick={link.action} className="hover:text-white transition-colors cursor-pointer block text-left">{link.label}</button>
+                        <button onClick={link.action} className="hover:text-white transition-colors cursor-pointer block text-right ml-auto md:ml-0 md:text-left w-full">{link.label}</button>
                       )}
                     </li>
                   ))}
@@ -67,9 +67,9 @@ export const SiteFooter = () => {
               </div>
 
               {/* Column 3 */}
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-center md:items-start col-span-2 text-center md:col-span-1 md:text-left">
                 <p className="font-display text-xl mb-6">Institutional ↗</p>
-                <div className="flex flex-col items-start gap-2 text-[10px] uppercase tracking-widest text-white/30 font-bold">
+                <div className="flex flex-col items-center md:items-start gap-2 text-[10px] uppercase tracking-widest text-white/30 font-bold text-center md:text-left">
                   <p>© {new Date().getFullYear()} SMG Cares</p>
                   <p>Supported by SMG ABA</p>
                 </div>
