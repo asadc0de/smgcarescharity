@@ -114,15 +114,19 @@ export function CustomDonationModal({ open, onOpenChange }: { open: boolean; onO
         let data: any = {};
         try { data = JSON.parse(text); } catch { console.error("Non-JSON resp", text.slice(0, 300)); }
         if (resp.ok && data.success) {
+          console.log("[CustomDonationModal] Transaction successful:", data);
           try { await sendEmail(); } catch (e: any) { console.warn("Email send failed", e); }
           setPaymentSuccess(true);
         } else {
+          console.error("[CustomDonationModal] Transaction failed:", data.error || resp.status);
           setPaymentError(data.error || `Payment failed (${resp.status})`);
         }
       } else {
+        console.error("[CustomDonationModal] Card tokenization failed:", result.errors);
         setPaymentError(result.errors?.[0]?.message || "Tokenization failed");
       }
     } catch (e: any) {
+      console.error("[CustomDonationModal] Transaction unexpected error:", e);
       setPaymentError(e.message || "Unexpected error");
     } finally {
       setPaymentLoading(false);

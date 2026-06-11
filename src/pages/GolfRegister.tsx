@@ -389,6 +389,7 @@ const GolfRegister = () => {
         }
 
         if (response.ok && data.success) {
+          console.log("[GolfRegister] Transaction successful:", data);
           // ── Update sold count in Firestore ──
           if (selectedTier) {
             try {
@@ -424,12 +425,15 @@ const GolfRegister = () => {
 
           setPaymentSuccess(true);
         } else {
+          console.error("[GolfRegister] Transaction failed:", data.error || response.status);
           setPaymentError(data.error || "Payment failed. Please try again.");
         }
       } else {
+        console.error("[GolfRegister] Card tokenization failed:", result.errors);
         setPaymentError(result.errors?.[0]?.message || "Failed to tokenize card");
       }
     } catch (e: any) {
+      console.error("[GolfRegister] Transaction unexpected error:", e);
       setPaymentError(e.message || "An unexpected error occurred");
     } finally {
       setPaymentLoading(false);

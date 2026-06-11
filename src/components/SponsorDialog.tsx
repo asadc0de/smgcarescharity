@@ -138,6 +138,7 @@ export function SponsorDialog({ open, onOpenChange, sponsor }: { open: boolean; 
         let data: any = {};
         try { data = JSON.parse(text); } catch { console.error("Non-JSON resp", text.slice(0, 300)); }
         if (resp.ok && data.success) {
+          console.log("[SponsorDialog] Transaction successful:", data);
           // ── Update sold count in Firestore ──
           if (sponsor?.id) {
             try {
@@ -160,12 +161,15 @@ export function SponsorDialog({ open, onOpenChange, sponsor }: { open: boolean; 
           try { await sendEmail(); } catch (e: any) { console.warn("Email send failed", e); }
           setPaymentSuccess(true);
         } else {
+          console.error("[SponsorDialog] Transaction failed:", data.error || resp.status);
           setPaymentError(data.error || `Payment failed (${resp.status})`);
         }
       } else {
+        console.error("[SponsorDialog] Card tokenization failed:", result.errors);
         setPaymentError(result.errors?.[0]?.message || "Tokenization failed");
       }
     } catch (e: any) {
+      console.error("[SponsorDialog] Transaction unexpected error:", e);
       setPaymentError(e.message || "Unexpected error");
     } finally {
       setPaymentLoading(false);

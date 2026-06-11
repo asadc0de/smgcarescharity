@@ -24,11 +24,27 @@ const ScrollToTop = () => {
   return null;
 };
 
+const DomainRedirect = () => {
+  useEffect(() => {
+    const hostname = window.location.hostname;
+    if (hostname === "smgcares.com" || hostname === "www.smgcares.com") {
+      const newUrl = new URL(window.location.href);
+      newUrl.hostname = "smgcares.org";
+      if (newUrl.pathname === "/golf-register") {
+        newUrl.searchParams.set("scroll", "true");
+      }
+      window.location.replace(newUrl.toString());
+    }
+  }, []);
+  return null;
+};
+
 const App = () => (
   <TooltipProvider>
     <Toaster />
     <Sonner />
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <DomainRedirect />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Index />} />
