@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -20,6 +20,7 @@ export function CustomDonationModal({ open, onOpenChange }: { open: boolean; onO
   const [amountError, setAmountError] = useState("");
   const [payments, setPayments] = useState<any>(null);
   const [card, setCard] = useState<any>(null);
+  const cardRef = useRef<any>(null);
   const [paymentLoading, setPaymentLoading] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
@@ -51,25 +52,39 @@ export function CustomDonationModal({ open, onOpenChange }: { open: boolean; onO
         ? "https://sandbox.web.squarecdn.com/v1/square.js"
         : "https://web.squarecdn.com/v1/square.js";
 
-      const script = document.createElement("script");
-      script.src = scriptUrl;
-      script.onload = async () => {
+      const initializeSquare = async () => {
         try {
           if (!(window as any).Square) return;
           const sqPayments = (window as any).Square.payments(appId, locationId);
           setPayments(sqPayments);
           const cardObj = await sqPayments.card();
+          const container = document.getElementById('square-card-container-custom');
+          if (!container) return; // container removed before load finished, bail safely
           await cardObj.attach('#square-card-container-custom');
+          cardRef.current = cardObj;
           setCard(cardObj);
         } catch (e: any) {
-          console.error("Square init failed:", e);
-          setPaymentError("Failed to initialize Square Payment. Check your App ID, Location ID, or network connection.");
+          console.error("Square initialization failed:", e);
+          setPaymentError(e.message || "Failed to initialize payment form. Please refresh and try again.");
         }
       };
-      document.body.appendChild(script);
+
+      const existingScript = document.getElementById('square-js');
+      if (existingScript) {
+        initializeSquare();
+      } else {
+        const script = document.createElement("script");
+        script.id = 'square-js';
+        script.src = scriptUrl;
+        script.onload = () => initializeSquare();
+        document.body.appendChild(script);
+      }
 
       return () => {
-        if (card) card.destroy();
+        if (cardRef.current) {
+          cardRef.current.destroy();
+          cardRef.current = null;
+        }
       };
     }
   }, [formStep, paymentSuccess]);

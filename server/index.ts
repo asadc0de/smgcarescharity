@@ -97,7 +97,9 @@ app.post("/api/payments/square", async (req, res) => {
     if (!squareResponse.ok) {
       const errorDetail =
         data?.errors?.[0]?.detail ||
+        data?.errors?.[0]?.message ||
         data?.errors?.[0]?.code ||
+        (data?.errors ? JSON.stringify(data.errors) : null) ||
         "Payment failed";
       console.error(`❌ SQUARE API ERROR: ${errorDetail}`);
       console.log(`---------------------------\n`);
@@ -114,7 +116,7 @@ app.post("/api/payments/square", async (req, res) => {
   } catch (error: any) {
     console.error(`❌ SERVER ERROR:`, error?.message ?? error);
     console.log(`---------------------------\n`);
-    res.status(500).json({ error: "Internal server error. Please try again." });
+    res.status(500).json({ error: error?.message || "Internal server error. Please try again." });
   }
 });
 
